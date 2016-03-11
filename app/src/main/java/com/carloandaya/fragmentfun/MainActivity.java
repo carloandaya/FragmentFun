@@ -11,6 +11,7 @@ import android.util.Log;
 public class MainActivity extends AppCompatActivity
         implements ButtonsFragment.OnFragmentInteractionListener, TextFragment.OnTextFragmentInteractionListener {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +31,16 @@ public class MainActivity extends AppCompatActivity
                     .commit();
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        FragmentManager fm = getFragmentManager();
+        if(fm.getBackStackEntryCount() != 0) {
+            fm.popBackStack();
+        } else {
+            super.onBackPressed();
+        }
     }
 
     @Override
